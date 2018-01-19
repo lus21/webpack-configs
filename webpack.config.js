@@ -17,7 +17,7 @@ module.exports = {
         path: path.join(__dirname, './build'),
         filename: 'bundle.js',
     },
-    // watch: true,
+    watch: true,
     // devServer: {
     //     hot: true,
     // },
