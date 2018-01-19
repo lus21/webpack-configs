@@ -26,7 +26,6 @@ function component() {
 let comp = component();
 document.body.appendChild(comp);
 
-console.log('c')
 if (module.hot) {
     module.hot.accept('./app.js', () => {
         document.body.removeChild(comp);

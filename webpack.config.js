@@ -17,10 +17,10 @@ module.exports = {
         path: path.join(__dirname, './build'),
         filename: 'bundle.js',
     },
-    watch: true,
-    // devServer: {
-    //     hot: true,
-    // },
+    // watch: true,
+    devServer: {
+        hot: true,
+    },
     module: {
        rules: [
             {
@@ -31,22 +31,22 @@ module.exports = {
             }
           }, {
             test: /\.less$/,
-            // use: [{
-            //     loader: "style-loader" // creates style nodes from JS strings
-            // }, {
-            //     loader: "css-loader" // translates CSS into CommonJS
-            // }, {
-            //     loader: "less-loader" // compiles Less to CSS
-            // }]
-            use: extractLess.extract({
-                use: [{
-                    loader: "css-loader"
-                }, {
-                    loader: "less-loader"
-                }],
-                // use style-loader in development
-                fallback: "style-loader"
-            })
+            use: [{
+                loader: "style-loader" // creates style nodes from JS strings
+            }, {
+                loader: "css-loader" // translates CSS into CommonJS
+            }, {
+                loader: "less-loader" // compiles Less to CSS
+            }]
+            // use: extractLess.extract({
+            //     use: [{
+            //         loader: "css-loader"
+            //     }, {
+            //         loader: "less-loader"
+            //     }],
+            //     // use style-loader in development
+            //     fallback: "style-loader"
+            // })
         }]
     },
     plugins: [
@@ -55,8 +55,8 @@ module.exports = {
             inject: true,
             template: './index.html'
         }),
-       extractLess,
-       //  new webpack.NamedModulesPlugin(),
-       //  new webpack.HotModuleReplacementPlugin()
+       // extractLess,
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ]
 };
